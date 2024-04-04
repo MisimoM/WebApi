@@ -1,5 +1,5 @@
 ﻿using Infrastructure.Contexts;
-using Infrastructure.Entities.Api;
+using Infrastructure.Entities;
 
 namespace Infrastructure.Repositories
 {

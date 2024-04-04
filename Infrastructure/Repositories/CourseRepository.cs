@@ -1,7 +1,9 @@
-﻿namespace Infrastructure.Repositories
-{
-    internal class CourseRepository
-    {
+﻿using Infrastructure.Contexts;
+using Infrastructure.Entities;
 
+namespace Infrastructure.Repositories
+{
+    public class CourseRepository(ApiDbContext dbContext) : BaseRepository<CourseEntity>(dbContext)
+    {
     }
 }

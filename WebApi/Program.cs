@@ -12,8 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApiDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("WebApiDatabase")));
+
 builder.Services.AddScoped<SubscriberRepository>();
 builder.Services.AddScoped<SubscriberService>();
+
+builder.Services.AddScoped<CourseRepository>();
+builder.Services.AddScoped<CourseService>();
 
 var app = builder.Build();
 

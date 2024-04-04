@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Infrastructure.Entities.Api
+namespace Infrastructure.Entities
 {
     public class SubscriberEntity
     {

@@ -18,5 +18,34 @@ namespace Business.Services
             }
             catch (Exception ex) { Debug.WriteLine(ex.Message); }
         }
+
+        public async Task<bool> RemoveSubscriberAsync(string email)
+        {
+            try
+            {
+                var subscriberEntity = await _subscriberRepository.GetAsync(subscriber => subscriber.Email == email);
+
+                if (subscriberEntity != null)
+                {
+                    return await _subscriberRepository.DeleteAsync(subscriber => subscriber.Email == email);
+                }
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+
+            return false;
+        }
+
+        public async Task<bool> IsSubscribedAsync(string email)
+        {
+            try
+            {
+                var existingSubscriber = await _subscriberRepository.GetAsync(subscriber => subscriber.Email == email);
+
+                return existingSubscriber != null;
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+
+            return false;
+        }
     }
 }

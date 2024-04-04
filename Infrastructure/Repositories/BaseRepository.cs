@@ -58,7 +58,7 @@ namespace Infrastructure.Repositories
             return null!;
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<List<TEntity>> GetAllAsync()
         {
             try
             {
