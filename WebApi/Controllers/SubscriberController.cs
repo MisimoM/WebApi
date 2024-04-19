@@ -13,17 +13,20 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Subscribe(SubscriberDTO dto)
         {
-            if (dto != null)
+            if (ModelState.IsValid)
             {
-                var isSubscribed = await _subscriberService.IsSubscribedAsync(dto.Email);
-
-                if (isSubscribed)
+                if (dto is not null)
                 {
-                    return Conflict("Subscriber with the provided email already exists.");
-                }
+                    var isSubscribed = await _subscriberService.IsSubscribedAsync(dto.Email);
 
-                await _subscriberService.CreateSubscriptionAsync(dto);
-                return CreatedAtAction(nameof(Subscribe), dto);
+                    if (isSubscribed)
+                    {
+                        return Conflict("Subscriber with the provided email already exists.");
+                    }
+
+                    await _subscriberService.CreateSubscriptionAsync(dto);
+                    return CreatedAtAction(nameof(Subscribe), dto);
+                }
             }
 
             return BadRequest();
@@ -34,7 +37,7 @@ namespace WebApi.Controllers
         {
             if (!string.IsNullOrEmpty(email))
             {
-                var isRemoved = await _subscriberService.RemoveSubscriberAsync(email);
+                var isRemoved = await _subscriberService.RemoveSubscribtionAsync(email);
                 
                 if (isRemoved)
                 {

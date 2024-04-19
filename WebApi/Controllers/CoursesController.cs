@@ -14,10 +14,13 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCourse(CourseDTO dto)
         {
-            if (dto is not null)
-            { 
-                await _courseService.CreateNewCourseAsync(dto);
-                return CreatedAtAction(nameof(AddCourse), dto);
+            if (ModelState.IsValid)
+            {
+                if (dto is not null)
+                {
+                    await _courseService.CreateNewCourseAsync(dto);
+                    return CreatedAtAction(nameof(AddCourse), dto);
+                }
             }
 
             return BadRequest();

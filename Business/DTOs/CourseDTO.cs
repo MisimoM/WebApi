@@ -2,9 +2,9 @@
 {
     public class CourseDTO
     {
-        public required string ImgUrl { get; set; }
-        public required string Title { get; set; }
-        public required string Author { get; set; }
+        public string ImgUrl { get; set; } = null!;
+        public string Title { get; set; } = null!;
+        public string Author { get; set; } = null!;
         public double Price { get; set; }
         public double? DiscountPrice { get; set; }
         public bool BestSeller { get; set; }

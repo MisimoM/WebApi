@@ -19,7 +19,7 @@ namespace Business.Services
             catch (Exception ex) { Debug.WriteLine(ex.Message); }
         }
 
-        public async Task<bool> RemoveSubscriberAsync(string email)
+        public async Task<bool> RemoveSubscribtionAsync(string email)
         {
             try
             {
